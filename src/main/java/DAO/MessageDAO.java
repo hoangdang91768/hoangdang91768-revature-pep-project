@@ -201,7 +201,7 @@ public class MessageDAO {
             return rowsUpdated > 0;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return false;  // Ensure a boolean value is returned in case of an exception
+            return false;
         } finally {
             try {
                 if (ps != null) {

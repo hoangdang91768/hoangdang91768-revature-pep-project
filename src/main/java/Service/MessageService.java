@@ -41,29 +41,27 @@ public class MessageService {
     
 
     public Message updateMessageTextByIdAndReturnMessage(int messageId, String newMessageText) {
-        // Validate message text
         if (newMessageText == null || newMessageText.trim().isEmpty() || newMessageText.length() > 255) {
-            return null;  // Indicate invalid message text
+            return null;  
         }
         
         try {
-            // Find the existing message
             Message message = messageDAO.findMessageById(messageId);
             if (message == null) {
-                return null;  // Indicate message not found
+                return null; 
             }
             
-            // Update the message
+            // update message
             boolean updated = messageDAO.updateMessageTextById(messageId, newMessageText);
             if (updated) {
                 message.setMessage_text(newMessageText);
-                return message;  // Return the updated message
+                return message;  
             } else {
-                return null;  // Indicate update failure
+                return null;
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return null;  // Indicate error
+            return null;  
         }
     }    
     
